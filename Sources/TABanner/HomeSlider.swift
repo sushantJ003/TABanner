@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 13.0, *)
-struct HomeSlider<Content: View, T: Identifiable>: View {
+public struct HomeSlider<Content: View, T: Identifiable>: View {
     var content: (T) -> Content
     var list: [T]
     
@@ -19,7 +19,7 @@ struct HomeSlider<Content: View, T: Identifiable>: View {
     @GestureState var offset: CGFloat = 0
     @State var currentSlider: Int = 0
     
-    init(spacing: CGFloat = 15, trailingSpace: CGFloat = 100, index: Binding<Int>,items: [T],@ViewBuilder content: @escaping (T)->Content) {
+    public init(spacing: CGFloat = 15, trailingSpace: CGFloat = 100, index: Binding<Int>,items: [T],@ViewBuilder content: @escaping (T)->Content) {
         self.list = items
         self.spacing = spacing
         self.trailingSpace = trailingSpace
@@ -27,7 +27,7 @@ struct HomeSlider<Content: View, T: Identifiable>: View {
         self.content = content
     }
     
-    var body: some View {
+    public var body: some View {
         GeometryReader{proxy in
             
             let width = proxy.size.width - (trailingSpace - spacing)
